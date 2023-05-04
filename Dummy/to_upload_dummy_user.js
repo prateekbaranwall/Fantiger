@@ -10,11 +10,10 @@ app.use(express.json())
 app.use(express.urlencoded())
 app.use(cors())
 
-const ID = `mongodb+srv://prateek_bd:prateek1234@cluster0.onsao.mongodb.net/fantiger`;
 const connectToMongo = async () => {
     try {
       mongoose.set("strictQuery", false);
-      mongoose.connect(ID);
+      mongoose.connect(process.env.ID);
       console.log("Connected to Mongo Successfully!");
     } catch (error) {
       console.log("error: ",error);
@@ -52,10 +51,4 @@ var User = new mongoose.model("User", userSchema);
     }
   })();
 
-  export default User;
-
-// module.exports = User;
-
-
-// export {User};
  
